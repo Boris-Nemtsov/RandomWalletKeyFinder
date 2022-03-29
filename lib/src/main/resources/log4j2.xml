@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<Configuration>
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout/>
+		</Console>
+		<RollingFile name="Main_Appender" fileName="log/wallet.log" filePattern="log/%d{yyyyMMdd}/wallet_%i.log">
+			<PatternLayout pattern="%d - %m%n"/>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="10MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="48" />
+		</RollingFile>
+	</Appenders>
+	
+	<Loggers>
+		<Root level="ERROR">
+			<AppenderRef ref="console"/>
+		</Root>
+		<Logger name="Main" level="All">
+			<AppenderRef ref="Main_Appender" />
+		</Logger>
+	</Loggers>
+</Configuration>
