@@ -1,8 +1,6 @@
 package config;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.math.BigInteger;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -10,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import datatype.ConfigWrapper;
 import datatype.StrategyType;
+import util.ResourceUtils;
 
 public class Config {
 	public static final ConfigWrapper Current = new ConfigWrapper();
@@ -20,12 +19,12 @@ public class Config {
 		try {
 			if (new File("config.cfg").exists() == false) {
 				System.out.println("Missing file : config.cfg. Try to load default config");
-				copyResource("config.cfg");
+				ResourceUtils.copyResource("config.cfg", "config.cfg");
 			}
 			
 			if (new File("log4j2.xml").exists() == false) {
 				System.out.println("Missing file : log4j2.xml. Try to load default config");
-				copyResource("log4j2.xml");
+				ResourceUtils.copyResource("log4j2.xml", "log4j2.xml");
 			}
 			
 			JsonNode node = mapper.readTree(new File("config.cfg"));
@@ -155,24 +154,6 @@ public class Config {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.exit(-1);
-		}
-	}
-
-	private static void copyResource(String resourceName) {
-		InputStream resourceStream;
-		FileOutputStream outputStream;
-		
-		try {
-			resourceStream = ClassLoader.getSystemResourceAsStream(resourceName);
-			outputStream = new FileOutputStream(resourceName);
-			
-			int data;
-			while ((data = resourceStream.read()) > 0) {
-				outputStream.write(data);
-			}
-		} catch (Exception e) {
-			System.out.println("Cannot create default config : " + resourceName);
 			System.exit(-1);
 		}
 	}

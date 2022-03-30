@@ -4,7 +4,6 @@ import java.io.File;
 import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -27,7 +26,7 @@ public class Peeked {
 				}
 				
 				if (new File(dbFileName).exists() == false) {
-					Files.copy(Paths.get("db/DEFAULT_TABLE.db"), Paths.get(dbFileName), StandardCopyOption.REPLACE_EXISTING);
+					ResourceUtils.copyResource("DEFAULT_TABLE.db", dbFileName);
 				}
 			}
 

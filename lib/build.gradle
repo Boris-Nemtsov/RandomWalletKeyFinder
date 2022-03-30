@@ -50,7 +50,9 @@ jar {
 
 task copyDefault(type: Copy) {
 	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-	from 'src/main/resources'
+	from ('src/main/resources') {
+		exclude 'DEFAULT_TABLE.db'
+	}
 	into 'build/libs'
 }
 
