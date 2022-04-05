@@ -38,7 +38,7 @@ public class Eth extends Network {
 		PROVIDER_ETH = Web3j.build(new HttpService("https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"));
 		PROVIDER_ETC = Web3j.build(new HttpService("https://www.ethercluster.com/etc"));
 		PROVIDER_BSC = Web3j.build(new HttpService("https://bsc-dataseed.binance.org"));
-		PROVIDER_POLYGON = Web3j.build(new HttpService("https://rpc-mainnet.matic.quiknode.pro"));
+		PROVIDER_POLYGON = Web3j.build(new HttpService("https://matic-mainnet.chainstacklabs.com"));
 		PROVIDER_KLAYTN = Web3j.build(new HttpService("https://public-node-api.klaytnapi.com/v1/cypress"));
 		PROVIDER_AVAX = Web3j.build(new HttpService("https://api.avax.network/ext/bc/C/rpc"));
 	}
