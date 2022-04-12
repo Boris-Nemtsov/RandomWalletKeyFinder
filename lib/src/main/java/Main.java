@@ -8,6 +8,8 @@ public class Main {
 		
 		if (Config.Current.ethStrategy != StrategyType.NOT_SET) {
 			Config.Current.ethStrategy.start();
+		} else if (Config.Current.etcStrategy != StrategyType.NOT_SET) {
+			Config.Current.etcStrategy.start();
 		} else if (Config.Current.bscStrategy != StrategyType.NOT_SET) {
 			Config.Current.bscStrategy.start();
 		} else if (Config.Current.polyStrategy != StrategyType.NOT_SET) {
