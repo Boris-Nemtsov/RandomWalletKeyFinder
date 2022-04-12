@@ -15,6 +15,7 @@ import strategy.RandEcEth;
 import strategy.RandPhraseEth;
 import strategy.SeqEcEth;
 import strategy.SeqPhraseEth;
+import util.UrlParser;
 
 public class Eth extends Network {
 	private Web3j PROVIDER_ETH;
@@ -62,48 +63,66 @@ public class Eth extends Network {
 			
 			if (Config.Current.ethStrategy != StrategyType.NOT_SET) {
 				try {
-					BigInteger balanceEth = PROVIDER_ETH.ethGetBalance(walletAddress, DefaultBlockParameterName.LATEST).send()
+					BigInteger balanceEth = 
+							UrlParser.openAndGetParser(
+									PROVIDER_ETH.ethGetBalance(walletAddress, DefaultBlockParameterName.LATEST))
 							.getBalance();
+					
 					amount = amount.add(balanceEth);	
 				} catch (Exception e) {}
 			}
 			
 			if (Config.Current.etcStrategy != StrategyType.NOT_SET) {
 				try {
-					BigInteger balanceEtc = PROVIDER_ETC.ethGetBalance(walletAddress, DefaultBlockParameterName.LATEST).send()
+					BigInteger balanceEtc =
+							UrlParser.openAndGetParser(
+								PROVIDER_ETC.ethGetBalance(walletAddress, DefaultBlockParameterName.LATEST))
 							.getBalance();
+					
 					amount = amount.add(balanceEtc);	
 				} catch (Exception e) {}
 			}
 			
 			if (Config.Current.bscStrategy != StrategyType.NOT_SET) {
 				try {
-					BigInteger balanceBsc = PROVIDER_BSC.ethGetBalance(walletAddress, DefaultBlockParameterName.LATEST).send()
+					BigInteger balanceBsc = 
+							UrlParser.openAndGetParser(
+									PROVIDER_BSC.ethGetBalance(walletAddress, DefaultBlockParameterName.LATEST))
 							.getBalance();
+					
 					amount = amount.add(balanceBsc);
 				} catch (Exception e) {}
 			}
 			
 			if (Config.Current.polyStrategy != StrategyType.NOT_SET) {
 				try {
-					BigInteger balancePolygon = PROVIDER_POLYGON.ethGetBalance(walletAddress, DefaultBlockParameterName.LATEST)
-							.send().getBalance();
+					BigInteger balancePolygon = 
+							UrlParser.openAndGetParser(
+									PROVIDER_POLYGON.ethGetBalance(walletAddress, DefaultBlockParameterName.LATEST))
+							.getBalance();
+					
 					amount = amount.add(balancePolygon);
 				} catch (Exception e) {}
 			}
 			
 			if (Config.Current.klayStrategy != StrategyType.NOT_SET) {
 				try {
-					BigInteger balanceKlaytn = PROVIDER_KLAYTN.ethGetBalance(walletAddress, DefaultBlockParameterName.LATEST)
-							.send().getBalance();
+					BigInteger balanceKlaytn =
+							UrlParser.openAndGetParser(
+									PROVIDER_KLAYTN.ethGetBalance(walletAddress, DefaultBlockParameterName.LATEST))
+							.getBalance();
+					
 					amount = amount.add(balanceKlaytn);
 				} catch (Exception e) {}
 			}
 			
 			if (Config.Current.avaxStrategy != StrategyType.NOT_SET) {
 				try {
-					BigInteger balanceAvax = PROVIDER_AVAX.ethGetBalance(walletAddress, DefaultBlockParameterName.LATEST)
-							.send().getBalance();
+					BigInteger balanceAvax = 
+							UrlParser.openAndGetParser(
+									PROVIDER_AVAX.ethGetBalance(walletAddress, DefaultBlockParameterName.LATEST))
+							.getBalance();
+					
 					amount = amount.add(balanceAvax);
 				} catch (Exception e) {}
 			}
@@ -124,9 +143,11 @@ public class Eth extends Network {
 			
 			if (Config.Current.ethStrategy != StrategyType.NOT_SET) {
 				try {
-					BigInteger transactionEth = PROVIDER_ETH
-							.ethGetTransactionCount(walletAddress, DefaultBlockParameterName.LATEST).send()
+					BigInteger transactionEth = 
+							UrlParser.openAndGetParser(
+									PROVIDER_ETH.ethGetTransactionCount(walletAddress, DefaultBlockParameterName.LATEST))
 							.getTransactionCount();
+					
 					amount = amount.add(transactionEth);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -135,9 +156,11 @@ public class Eth extends Network {
 			
 			if (Config.Current.etcStrategy != StrategyType.NOT_SET) {
 				try {
-					BigInteger transactionEtc = PROVIDER_ETC
-							.ethGetTransactionCount(walletAddress, DefaultBlockParameterName.LATEST).send()
+					BigInteger transactionEtc = 
+							UrlParser.openAndGetParser(
+									PROVIDER_ETC.ethGetTransactionCount(walletAddress, DefaultBlockParameterName.LATEST))
 							.getTransactionCount();
+					
 					amount = amount.add(transactionEtc);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -146,9 +169,11 @@ public class Eth extends Network {
 			
 			if (Config.Current.bscStrategy != StrategyType.NOT_SET) {
 				try {
-					BigInteger transactionBsc = PROVIDER_BSC
-							.ethGetTransactionCount(walletAddress, DefaultBlockParameterName.LATEST).send()
+					BigInteger transactionBsc = 
+							UrlParser.openAndGetParser(
+									PROVIDER_BSC.ethGetTransactionCount(walletAddress, DefaultBlockParameterName.LATEST))
 							.getTransactionCount();
+					
 					amount = amount.add(transactionBsc);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -157,9 +182,11 @@ public class Eth extends Network {
 			
 			if (Config.Current.polyStrategy != StrategyType.NOT_SET) {
 				try {
-					BigInteger transactionPolygon = PROVIDER_POLYGON
-							.ethGetTransactionCount(walletAddress, DefaultBlockParameterName.LATEST).send()
+					BigInteger transactionPolygon = 
+							UrlParser.openAndGetParser(
+									PROVIDER_POLYGON.ethGetTransactionCount(walletAddress, DefaultBlockParameterName.LATEST))
 							.getTransactionCount();
+					
 					amount = amount.add(transactionPolygon);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -168,9 +195,11 @@ public class Eth extends Network {
 			
 			if (Config.Current.klayStrategy != StrategyType.NOT_SET) {
 				try {
-					BigInteger transactionKlaytn = PROVIDER_KLAYTN
-							.ethGetTransactionCount(walletAddress, DefaultBlockParameterName.LATEST).send()
+					BigInteger transactionKlaytn = 
+							UrlParser.openAndGetParser(
+									PROVIDER_KLAYTN.ethGetTransactionCount(walletAddress, DefaultBlockParameterName.LATEST))
 							.getTransactionCount();
+					
 					amount = amount.add(transactionKlaytn);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -179,9 +208,11 @@ public class Eth extends Network {
 			
 			if (Config.Current.avaxStrategy != StrategyType.NOT_SET) {
 				try {
-					BigInteger transactionAvax = PROVIDER_AVAX
-							.ethGetTransactionCount(walletAddress, DefaultBlockParameterName.LATEST).send()
+					BigInteger transactionAvax = 
+							UrlParser.openAndGetParser(
+									PROVIDER_AVAX.ethGetTransactionCount(walletAddress, DefaultBlockParameterName.LATEST))
 							.getTransactionCount();
+					
 					amount = amount.add(transactionAvax);
 				} catch (Exception e) {
 					e.printStackTrace();
